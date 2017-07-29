@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block main %}
+<h3>Course list</h3>
+{% if course_list %}
+  <ul>
+    {% for course in course_list %}
+      <li><a href="{% url "courses:detail_course" course.id %}">{{ course.title }}</a></li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No course available at the moment.</p>
+{% endif %}
+<p>
+{% if can_add_course %}
+  <a href="{% url "courses:add_course" %}">Add a course</a>
+{% endif %}
+</p>
+{% endblock %}

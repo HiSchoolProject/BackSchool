@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block main %}
+<h3>Group list</h3>
+{% if group_list %}
+  <ul>
+    {% for group in group_list %}
+      <li><a href="{% url "classes:detail_group" group.id %}">{{ group.title }}</a></li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No group available at the moment.</p>
+{% endif %}
+<p>
+{% if can_add_group %}
+  <a href="{% url "classes:add_group" %}">Add a group</a>
+{% endif %}
+</p>
+{% endblock %}

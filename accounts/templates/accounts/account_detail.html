@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block main %}
+Name: {{ object.user.first_name }} {{ object.user.last_name }}<br/>
+Login: {{ object.user.username }}<br/>
+Groups:
+<ul>
+  {% for group in object.user.groups.all %}
+    <li>{{ group }}</li>
+  {% endfor %}
+</ul>
+{% if object.user.is_superuser %}
+  <strong>This user is an administrator</strong>
+{% endif %}
+{% if can_edit_account %}
+  <a href="{% url "accounts:edit_account" object.id %}">Edit</a>
+{% endif %}
+{% endblock %}

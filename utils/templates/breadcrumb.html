@@ -1,0 +1,10 @@
+<div class="breadcrumb">
+  {% if elements %}
+    <a href="#">Home</a>
+    {% for element in elements %}
+      / <a href="{{ element.url }}">{{ element.text }}</a>
+    {% endfor %}
+  {% else %}
+    Unable to define a hierarchy.
+  {% endif %}
+</div>
