@@ -17,16 +17,26 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with HiSchool!.  If not, see <http://www.gnu.org/licenses/>.
 """Define the urls of the Accounts application."""
+from django.conf.urls import include
 from django.conf.urls import url
 from django.contrib.auth import views as auth_views
+from rest_framework import routers
 
 from .views import AccountDetailView
 from .views import AccountEditView
 from .views import AccountListView
-
 from .views import ProfileView
 
+from .viewSets import AccountViewSet
+from .viewSets import GroupViewSet
+from .viewSets import UserViewSet
+
 app_name = 'accounts'
+
+router = routers.DefaultRouter()
+router.register(r'accounts', AccountViewSet)
+router.register(r'groups', GroupViewSet)
+router.register(r'users', UserViewSet)
 
 urlpatterns = [
     url(r'^login/$', auth_views.login, name='login'),
@@ -36,5 +46,7 @@ urlpatterns = [
     url(r'^(?P<pk>[0-9]+)/$', AccountDetailView.as_view(), name='detail_account'),
     url(r'^edit/(?P<pk>[0-9]+)/$', AccountEditView.as_view(), name='edit_account'),
 
-    url(r'^profile/$', ProfileView.as_view(), name='profile')
+    url(r'^profile/$', ProfileView.as_view(), name='profile'),
+
+    url(r'^api/', include(router.urls))
 ]
