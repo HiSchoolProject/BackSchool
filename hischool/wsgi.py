@@ -1,5 +1,5 @@
 """
-WSGI config for leprojet project.
+WSGI config for HiSchool! project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "leprojet.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "hischool.settings")
 
 application = get_wsgi_application()

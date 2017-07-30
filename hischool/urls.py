@@ -1,4 +1,4 @@
-"""leprojet URL Configuration."""
+"""HiSchool! URL Configuration."""
 from django.conf.urls import include, url
 from django.contrib import admin
 

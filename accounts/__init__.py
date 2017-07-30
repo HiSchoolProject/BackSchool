@@ -16,4 +16,4 @@
 #
 # You should have received a copy of the GNU Lesser General Public License
 # along with HiSchool!.  If not, see <http://www.gnu.org/licenses/>.
-default_app_config = 'leprojet.accounts.app.AccountConfig'
+default_app_config = 'hischool.accounts.app.AccountConfig'
