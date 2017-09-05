@@ -16,19 +16,9 @@
 #
 # You should have received a copy of the GNU Lesser General Public License
 # along with HiSchool!.  If not, see <http://www.gnu.org/licenses/>.
-"""HiSchool! URL Configuration."""
-from django.conf.urls import include, url
-from django.contrib import admin
+from django.shortcuts import render
 
-"""
-Redirect every API call the dispatcher application that is responsible for forwarding API queries to the correct
-application
 
-Non-api calls are relayed to a displayer application that injects the URL into the client template
-"""
-urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^api/', include('dispatcher.urls')),
-    url(r'^.*$', include('displayer.urls'))
-]
+def default_view(request):
+    """Will call a generic template that should be able to communicate wih HiSchool! backend API."""
+    return render(request, 'index.html')
