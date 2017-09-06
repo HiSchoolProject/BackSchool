@@ -1,9 +1,0 @@
-{% extends "base.html" %}
-{% block main %}
-<p>
-Title: {{ object.title }}<br/>
-{% if can_edit_group %}
-  <a href="{% url "classes:edit_group" object.id %}">Edit</a>
-{% endif %}
-</p>
-{% endblock %}

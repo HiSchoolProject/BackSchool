@@ -28,9 +28,4 @@ from .views import GroupDeleteView
 app_name = 'classes'
 
 urlpatterns = [
-    url(r'^group/$', GroupListView.as_view(), name='list_group'),
-    url(r'^group/(?P<pk>[0-9]+)/$', GroupDetailView.as_view(), name='detail_group'),
-    url(r'^group/add/$', GroupAddView.as_view(), name='add_group'),
-    url(r'^group/edit/(?P<pk>[0-9]+)/$', GroupEditView.as_view(), name='edit_group'),
-    url(r'^group/delete/(?P<pk>[0-9]+)/$', GroupDeleteView.as_view(), name='delete_group'),
 ]
