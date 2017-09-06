@@ -22,11 +22,6 @@ from django.conf.urls import url
 from django.contrib.auth import views as auth_views
 from rest_framework import routers
 
-from .views import AccountDetailView
-from .views import AccountEditView
-from .views import AccountListView
-from .views import ProfileView
-
 from .viewSets import AccountViewSet
 from .viewSets import GroupViewSet
 from .viewSets import UserViewSet
@@ -41,12 +36,6 @@ router.register(r'users', UserViewSet)
 urlpatterns = [
     url(r'^login/$', auth_views.login, name='login'),
     url(r'^logout/$', auth_views.logout, name='logout'),
-
-    url(r'^$', AccountListView.as_view(), name='list_account'),
-    url(r'^(?P<pk>[0-9]+)/$', AccountDetailView.as_view(), name='detail_account'),
-    url(r'^edit/(?P<pk>[0-9]+)/$', AccountEditView.as_view(), name='edit_account'),
-
-    url(r'^profile/$', ProfileView.as_view(), name='profile'),
 
     url(r'^api/', include(router.urls))
 ]
