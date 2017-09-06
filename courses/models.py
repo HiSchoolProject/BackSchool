@@ -42,6 +42,14 @@ class Course(Model):
         """Define the URL that should be returned when a course is saved."""
         return reverse('courses:detail_course', kwargs={'pk': self.pk})
 
+    def can_edit(self, user):
+        """Define if the given user has the permission to edit the current course."""
+        return (user.has_perm('courses.change_course') or self.referent == user)
+
+    def can_add_part(self, user):
+        """Define if the given user has the permission to add a new part inside of the given course."""
+        return (user.has_perm('courses.add_part') or self.referent == user)
+
     def __str__(self):
         """Define the standard string representation of a course."""
         return '{} ({} {})'.format(self.title, self.referent.first_name, self.referent.last_name)
@@ -70,6 +78,14 @@ class Part(Model):
     def get_parent_relation(self):
         return self.course
 
+    def can_edit(self, user):
+        """Define if the given user has the permission to edit the current part."""
+        return (user.has_perm('courses.change_part') or self.course.referent == user)
+
+    def can_add_sequence(self, user):
+        """Define if the given user has the permission to add a new sequence to the current part."""
+        return (user.has_perm('courses.add_sequence') or self.course.referent == user)
+
     def __str__(self):
         """Define the standard string representation of a course part."""
         return '#{}: {} ({})'.format(self.position, self.title, self.course.title)
@@ -92,6 +108,10 @@ class Sequence(Model):
 
     def get_parent_relation(self):
         return self.part
+
+    def can_edit_sequence(self, user):
+        """Define if the given user has the permission to edit the current sequence."""
+        return (user.has_perm('courses.change_sequence') or self.part.course.referent == user)
 
     def __str__(self):
         """Define the standard string representation of a sequence."""
