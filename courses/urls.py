@@ -19,22 +19,6 @@
 """Define the urls of the Course application."""
 from django.conf.urls import url
 
-from .views.courses import CourseListView
-from .views.courses import CourseDetailView
-from .views.courses import CourseAddView
-from .views.courses import CourseEditView
-from .views.courses import CourseDeleteView
-
-from .views.parts import PartDetailView
-from .views.parts import PartAddView
-from .views.parts import PartEditView
-from .views.parts import PartDeleteView
-
-from .views.sequences import SequenceDetailView
-from .views.sequences import SequenceAddView
-from .views.sequences import SequenceEditView
-from .views.sequences import SequenceDeleteView
-
 
 app_name = 'courses'
 

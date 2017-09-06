@@ -18,12 +18,6 @@
 # along with HiSchool!.  If not, see <http://www.gnu.org/licenses/>.
 from django.conf.urls import url
 
-from .views import GroupListView
-from .views import GroupDetailView
-from .views import GroupAddView
-from .views import GroupEditView
-from .views import GroupDeleteView
-
 
 app_name = 'classes'
 
