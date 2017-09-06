@@ -25,7 +25,7 @@ from .models import Sequence
 from .models import Session
 from .models import Subscription
 
-''' Allow the courses and its parts and sequences to be edited through the admin interface '''
+"""Allow the courses and its parts and sequences to be edited through the admin interface."""
 admin.site.register(Course)
 admin.site.register(Part)
 admin.site.register(Sequence)

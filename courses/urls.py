@@ -39,19 +39,4 @@ from .views.sequences import SequenceDeleteView
 app_name = 'courses'
 
 urlpatterns = [
-    url(r'^$', CourseListView.as_view(), name='list_course'),
-    url(r'^(?P<pk>[0-9]+)/$', CourseDetailView.as_view(), name='detail_course'),
-    url(r'^add/$', CourseAddView.as_view(), name='add_course'),
-    url(r'^edit/(?P<pk>[0-9]+)/$', CourseEditView.as_view(), name='edit_course'),
-    url(r'^delete/(?P<pk>[0-9]+)/$', CourseDeleteView.as_view(), name='delete_course'),
-
-    url(r'^part/(?P<pk>[0-9]+)/$', PartDetailView.as_view(), name='detail_part'),
-    url(r'^part/add/(?P<course>[0-9]+)/$', PartAddView.as_view(), name='add_part'),
-    url(r'^part/edit/(?P<pk>[0-9]+)/$', PartEditView.as_view(), name='edit_part'),
-    url(r'^part/delete/(?P<pk>[0-9]+)/$', PartDeleteView.as_view(), name='delete_part'),
-
-    url(r'^sequence/(?P<pk>[0-9]+)/$', SequenceDetailView.as_view(), name='detail_sequence'),
-    url(r'^sequence/add/(?P<part>[0-9]+)/$', SequenceAddView.as_view(), name='add_sequence'),
-    url(r'^sequence/edit/(?P<pk>[0-9]+)/$', SequenceEditView.as_view(), name='edit_sequence'),
-    url(r'^sequence/delete/(?P<pk>[0-9]+)/$', SequenceDeleteView.as_view(), name='delete_sequence')
 ]
