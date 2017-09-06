@@ -21,10 +21,8 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.db import models
 
-from utils.models import Model
 
-
-class Course(Model):
+class Course(models.Model):
     """
     Store the available courses on the platform.
 
@@ -55,7 +53,7 @@ class Course(Model):
         return '{} ({} {})'.format(self.title, self.referent.first_name, self.referent.last_name)
 
 
-class Part(Model):
+class Part(models.Model):
     """Define a part of a course."""
 
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
@@ -75,9 +73,6 @@ class Part(Model):
     def get_absolute_url(self):
         return reverse('courses:detail_part', kwargs={'pk': self.pk})
 
-    def get_parent_relation(self):
-        return self.course
-
     def can_edit(self, user):
         """Define if the given user has the permission to edit the current part."""
         return (user.has_perm('courses.change_part') or self.course.referent == user)
@@ -91,7 +86,7 @@ class Part(Model):
         return '#{}: {} ({})'.format(self.position, self.title, self.course.title)
 
 
-class Sequence(Model):
+class Sequence(models.Model):
     """Define a sequence of a part."""
 
     part = models.ForeignKey(Part, on_delete=models.CASCADE)
@@ -106,9 +101,6 @@ class Sequence(Model):
     def get_absolute_url(self):
         return reverse('courses:detail_sequence', kwargs={'pk': self.pk})
 
-    def get_parent_relation(self):
-        return self.part
-
     def can_edit_sequence(self, user):
         """Define if the given user has the permission to edit the current sequence."""
         return (user.has_perm('courses.change_sequence') or self.part.course.referent == user)
@@ -119,7 +111,7 @@ class Sequence(Model):
                                                self.part.title)
 
 
-class Session(Model):
+class Session(models.Model):
     """A session of a course is a new iteration of this course."""
 
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
@@ -131,7 +123,7 @@ class Session(Model):
         return '{} ({})'.format(self.course.title, self.start_date)
 
 
-class Subscription(Model):
+class Subscription(models.Model):
     """Represents the membership of a user and a course."""
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
