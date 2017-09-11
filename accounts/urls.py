@@ -33,6 +33,8 @@ router.register(r'accounts', AccountViewSet)
 router.register(r'groups', GroupViewSet)
 router.register(r'users', UserViewSet)
 
+apiurls = [(router.urls, 1)]
+
 urlpatterns = [
     url(r'^login/$', auth_views.login, name='login'),
     url(r'^logout/$', auth_views.logout, name='logout'),

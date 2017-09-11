@@ -19,9 +19,12 @@
 """Define the urls of the dispatcher application."""
 from django.conf.urls import url
 
+from .dispatchers import ApplicationAPIDispatcher
 
 app_name = 'dispatcher'
 
+accounts_api = ApplicationAPIDispatcher('accounts')
+
 urlpatterns = [
-    url(r'
+    accounts_api.url
 ]
