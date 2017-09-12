@@ -142,3 +142,7 @@ REST_FRAMEWORK = {
     ],
     'PAGE_SIZE': 25
 }
+
+if not DEBUG:
+    # Disable the browsable API if the application is running in production
+    REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = ['rest_framework.renderers.JSONRenderer']
