@@ -136,6 +136,12 @@ LOGIN_REDIRECT_URL = '/courses/'
 
 LOGOUT_REDIRECT_URL = '/accounts/login'
 
+# REST API Configuration
+
+# Add cross origin resource sharing policies to API-related URLs
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_URLS_REGEX = r'^/api/.*$'
+
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
@@ -150,4 +156,3 @@ if not DEBUG:
     # Disable the browsable API if the application is running in production
     REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = ['rest_framework.renderers.JSONRenderer']
 
-CORS_ORIGIN_ALLOW_ALL = True
