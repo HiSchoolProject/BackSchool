@@ -23,6 +23,6 @@ from .dispatchers import APIDispatcher
 
 app_name = 'dispatcher'
 
-apis = APIDispatcher(['accounts'])
+apis = APIDispatcher(['accounts'], [1])
 
 urlpatterns = apis.urls
