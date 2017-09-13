@@ -17,12 +17,21 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with HiSchool!.  If not, see <http://www.gnu.org/licenses/>.
 """Define the urls of the dispatcher application."""
+import re
+
 from django.apps import apps
 
 from .dispatchers import APIDispatcher
 
+# Get a list of the project applications
+# Note that we could make this filter cleaner by moving it in an application dedicated to utils about
+# applications management, and also by updating the signature of APIDispatcher.__init__ to handle AppConfig
+# See #15
+installed_applications = [app.name for app in list(apps.get_app_configs())
+                          if re.match(r'^(core|extensions)', app.path) is not None]
+
 app_name = 'dispatcher'
 
-apis = APIDispatcher(['accounts'], [1])
+apis = APIDispatcher(installed_applications, [1])
 
 urlpatterns = apis.urls
