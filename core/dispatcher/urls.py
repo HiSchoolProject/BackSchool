@@ -17,7 +17,7 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with HiSchool!.  If not, see <http://www.gnu.org/licenses/>.
 """Define the urls of the dispatcher application."""
-from django.conf.urls import url
+from django.apps import apps
 
 from .dispatchers import APIDispatcher
 

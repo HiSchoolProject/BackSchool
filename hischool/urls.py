@@ -29,5 +29,5 @@ Non-api calls are relayed to a displayer application that injects the URL into t
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^api/', include('dispatcher.urls')),
+    url(r'^api/', include('core.dispatcher.urls')),
 ]
