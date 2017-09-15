@@ -20,6 +20,8 @@
 from django.conf.urls import include, url
 from django.contrib import admin
 
+from rest_framework_jwt.views import obtain_jwt_token
+
 """
 Redirect every API call the dispatcher application that is responsible for forwarding API queries to the correct
 application
@@ -28,6 +30,6 @@ Non-api calls are relayed to a displayer application that injects the URL into t
 """
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api-auth/', obtain_jwt_token),
     url(r'^api/', include('core.dispatcher.urls')),
 ]
