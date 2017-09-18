@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'classes.apps.ClassesConfig',
     'courses.apps.CoursesConfig',
     'displayer.apps.DisplayerConfig',
+    'models.apps.ModelsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

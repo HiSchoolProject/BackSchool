@@ -22,8 +22,6 @@ from importlib import import_module
 from django.conf.urls import include
 from django.conf.urls import url
 
-from .exceptions import DispatcherException
-
 
 class Dispatcher():
     """
@@ -82,7 +80,7 @@ class APIDispatcher(Dispatcher):
             else:
                 return []
         except ImportError as e:
-            raise DispatcherException('Failed to import [{}.urls]: [{}]'.format(application, e))
+            return []
 
     def import_application_urls(self, application, api_urls):
         """Construct an array of urls for the object."""
